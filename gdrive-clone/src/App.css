@@ -1,0 +1,46 @@
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-main: #f8f9fa;
+  --bg-sidebar: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f3f4;
+  --accent: #1a73e8;
+  --accent-hover: #1557b0;
+  --text-primary: #202124;
+  --text-secondary: #5f6368;
+  --border: #e0e0e0;
+  --sidebar-width: 256px;
+  --navbar-height: 64px;
+  --shadow-card: 0 1px 3px rgba(60,64,67,0.12), 0 1px 2px rgba(60,64,67,0.08);
+  --shadow-card-hover: 0 4px 12px rgba(60,64,67,0.18);
+  --radius: 12px;
+  --font-main: 'Google Sans', 'Roboto', sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-main);
+  color: var(--text-primary);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
