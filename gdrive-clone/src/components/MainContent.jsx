@@ -1,4 +1,5 @@
 import FileCard from './FileCard'
+import ContextMenu from './ContextMenu'
 import { useState } from 'react'
 
 // Data lives OUTSIDE the component — easy to add/change later
@@ -28,6 +29,14 @@ function MainContent() {
           />
         ))}
       </div>
+      {contextMenu && (
+        <ContextMenu
+          x={contextMenu.x}
+          y={contextMenu.y}
+          file={contextMenu.file}
+          onClose={() => setContextMenu(null)}
+        />
+      )}
     </main>
   )
 }

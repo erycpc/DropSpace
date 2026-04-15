@@ -1,4 +1,5 @@
-// src/components/FileCard.jsx
+import React from 'react'
+
 function getIcon(type) {
   const icons = {
     pdf:    '📄',
@@ -10,9 +11,16 @@ function getIcon(type) {
   return icons[type] || '📄'
 }
 
-function FileCard({ file }) {
+function FileCard({ file, isSelected, onSelect, onRightClick }) {
   return (
-    <div className="file-card">
+    <div
+      className={`file-card ${isSelected ? 'selected' : ''}`}
+      onClick={onSelect}
+      onContextMenu={(e) => {
+        e.preventDefault()
+        onRightClick(e.clientX, e.clientY)
+      }}
+    >
 
       {/* TOP — icon preview area */}
       <div className="file-card-preview">
