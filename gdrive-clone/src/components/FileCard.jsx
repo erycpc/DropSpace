@@ -1,3 +1,4 @@
+// src/components/FileCard.jsx
 function getIcon(type) {
   const icons = {
     pdf:    '📄',
@@ -6,18 +7,26 @@ function getIcon(type) {
     folder: '📁',
     doc:    '📝',
   }
-  return icons[type] || '📄'   // fallback if type is unknown
+  return icons[type] || '📄'
 }
 
 function FileCard({ file }) {
   return (
     <div className="file-card">
-      <h3>{file.name}</h3>
-      <p>Size: {file.size} bytes</p>
-      <p>Type: {file.type}</p>
-      <p>Modified: {file.modified}</p>
+
+      {/* TOP — icon preview area */}
+      <div className="file-card-preview">
+        <span className="file-icon">{getIcon(file.type)}</span>
+      </div>
+
+      {/* BOTTOM — file info */}
+      <div className="file-card-info">
+        <span className="file-name">{file.name}</span>
+        <span className="file-meta">{file.size} · {file.modified}</span>
+      </div>
+
     </div>
-  );
+  )
 }
 
-export default FileCard;
+export default FileCard
