@@ -1,5 +1,6 @@
 import FileCard from './FileCard'
 import ContextMenu from './ContextMenu'
+import RenameModal from './RenameModal'
 import { useState, useReducer } from 'react'
 
 // Data lives OUTSIDE the component — easy to add/change later
