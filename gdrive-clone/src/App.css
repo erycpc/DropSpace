@@ -454,3 +454,10 @@ body {
 .modal-btn-save:hover {
   background: var(--accent-hover);
 }
+
+.content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
