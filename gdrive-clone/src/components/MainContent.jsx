@@ -1,5 +1,8 @@
 import { useState, useContext } from 'react'
 import { FilesContext } from '../context/FilesContext'
+import FileCard from './FileCard'
+import ContextMenu from './ContextMenu'
+import RenameModal from './RenameModal'
 
 function MainContent() {
   const { files, dispatch } = useContext(FilesContext)

@@ -1,9 +1,11 @@
+import logo from '../assets/Untitled design.png'
+
 function Navbar() {
   return (
     <nav className="navbar">
 
       <div className="navbar-logo">
-        <img src="src/assets/Untitled design.png" alt="DropSpace Logo" />
+        <img src={logo} alt="DropSpace Logo" />
         <span className="logo-text">DropSpace</span>
       </div>
 
@@ -17,7 +19,8 @@ function Navbar() {
         <div className="navbar-icon-btn" title="Settings">⚙️</div>
         <div className="navbar-icon-btn" title="Google apps">⊞</div>
         <div className="avatar">
-          <img src="src/assets/avatar.png" alt="User Avatar" />
+          {/* <img src="src/assets/avatar.png" alt="User Avatar" /> */}
+          <span>👤</span>
         </div>
       </div>
 
