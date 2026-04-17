@@ -27,14 +27,14 @@ function MainContent() {
             onRightClick={(x, y) => setContextMenu({ x, y, file })}
           />
         ))}
-
-        {filteredFiles.length === 0 && (
-          <div className="empty-state">
-            <span>🔍</span>
-            <p>No files match "{query}"</p>
-          </div>
-      )}
       </div>
+
+      {filteredFiles.length === 0 && (
+        <div className="empty-state">
+          <span>🔍</span>
+          <p>No files match "{query}"</p>
+        </div>
+      )}
       {contextMenu && (
         <ContextMenu
           x={contextMenu.x}
