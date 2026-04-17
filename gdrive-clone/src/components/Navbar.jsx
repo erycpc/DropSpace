@@ -1,6 +1,9 @@
 import logo from '../assets/Untitled design.png'
+import { useContext } from 'react'
+import { FilesContext } from '../context/FilesContext'
 
 function Navbar() {
+  const { setQuery } = useContext(FilesContext)
   return (
     <nav className="navbar">
 
@@ -11,7 +14,10 @@ function Navbar() {
 
       <div className="navbar-search">
         <span className="search-icon">🔍</span>
-        <input type="text" placeholder="Search in DropSpace" />
+        <input
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search in DropSpace"
+        />
       </div>
 
       <div className="navbar-user">
