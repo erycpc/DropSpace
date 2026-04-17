@@ -1,4 +1,4 @@
-import { useReducer } from 'react'
+import { useState, useReducer } from 'react'
 import { FilesContext } from './context/FilesContext'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
@@ -24,10 +24,11 @@ function filesReducer(state, action) {
 
 function App() {
   const [files, dispatch] = useReducer(filesReducer, initialFiles)
+  const [query, setQuery] = useState('')
 
   return (
     <div className="app-shell">
-      <FilesContext.Provider value={{ files, dispatch }}>
+      <FilesContext.Provider value={{ files, dispatch, query, setQuery }}>
         <Navbar />
         <div className="app-body">
           <Sidebar />
