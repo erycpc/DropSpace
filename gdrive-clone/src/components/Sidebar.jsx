@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { FilesContext } from '../context/FilesContext'
 
 const navItems = [
   { icon: '🗂️', label: 'My Drive' },
@@ -11,11 +12,15 @@ const navItems = [
 
 function Sidebar() {
   const [activeItem, setActiveItem] = useState('My Drive')
+  const { dispatch } = useContext(FilesContext)
 
   return (
     <aside className="sidebar">
 
-      <button className="new-btn">
+      <button className="new-btn" onClick={() => dispatch({
+  type: 'ADD',
+  file: { id: Date.now(), name: 'Untitled document', type: 'doc', size: '0 KB', modified: 'Today' }
+})}>
         <span className="new-btn-icon">+</span>
         <span>New</span>
       </button>
