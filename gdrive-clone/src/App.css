@@ -500,3 +500,127 @@ body {
 .empty-state p {
   font-size: 16px;
 }
+
+/* ── Preview Modal ───────────────────────────── */
+.preview-modal {
+  background: white;
+  border-radius: 12px;
+  width: 80vw;
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.preview-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60%;
+}
+
+.preview-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.preview-btn-download {
+  padding: 7px 16px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.preview-btn-download:hover {
+  background: var(--accent-hover);
+}
+
+.preview-btn-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: background 0.15s;
+}
+
+.preview-btn-close:hover {
+  background: var(--bg-card-hover);
+}
+
+.preview-body {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  min-height: 300px;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+.preview-pdf {
+  width: 100%;
+  height: 600px;
+  border: none;
+}
+
+.preview-video {
+  max-width: 100%;
+  max-height: 500px;
+}
+
+.preview-unsupported {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+}
+
+.preview-unsupported span {
+  font-size: 48px;
+}
+
+.preview-unsupported p {
+  font-size: 15px;
+}
+
+.preview-footer {
+  padding: 10px 20px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
