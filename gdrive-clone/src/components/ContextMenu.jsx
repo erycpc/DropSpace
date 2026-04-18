@@ -1,5 +1,6 @@
-function ContextMenu({ x, y, file, onClose, onDelete, onRename }) {
+function ContextMenu({ x, y, file, onClose, onDelete, onRename, onOpen }) {
   const menuItems = [
+    { icon: '👁️', label: 'Preview', action: onOpen },
     { icon: '📥', label: 'Download', action: onClose },
     { icon: '✏️', label: 'Rename',   action: () => onRename(file) },
     { icon: '🗑️', label: 'Delete',   action: () => { onDelete(file.id); onClose() } },

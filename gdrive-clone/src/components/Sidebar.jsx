@@ -1,6 +1,7 @@
 import { useState, useContext, useRef } from 'react'
 import { FilesContext } from '../context/FilesContext'
 import { Link, useLocation } from 'react-router-dom'
+import { formatSize, getFileType } from '../utils/fileHelper'
 
 const navItems = [
   { icon: '🗂️', label: 'My Drive',       path: '/'        },
@@ -16,20 +17,31 @@ function Sidebar() {
   const location = useLocation()  // tells you current URL
   const inputRef = useRef(null)  // for focusing the new file name input
 
+  const formatSize = (bytes) => {
+    if (bytes < 1024) return bytes + ' B'
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(0) + ' KB'
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB'
+  }
+
   const handleFileSelect = (e) => {
-    const selectedFiles = Array.from(e.target.files)
-    selectedFiles.forEach(file => dispatch({
+  const selectedFiles = Array.from(e.target.files)
+  selectedFiles.forEach(file => {
+    const url = URL.createObjectURL(file)
+    dispatch({
       type: 'ADD',
       file: {
         id: Date.now() + Math.random(),
         name: file.name,
-        type: file.type.split('/')[0],
-        size: `${(file.size / 1024).toFixed(2)} KB`,
-        modified: new Date(file.lastModified).toLocaleDateString()
+        size: formatSize(file.size),
+        type: getFileType(file.type),
+        modified: 'Today',
+        url,
+        mimeType: file.type
       }
-    }))
-    e.target.value = '' // reset input
-  }
+    })
+  })
+  e.target.value = ''
+}
 
   return (
     <aside className="sidebar">
