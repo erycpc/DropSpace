@@ -11,11 +11,12 @@ function getIcon(type) {
   return icons[type] || '📄'
 }
 
-function FileCard({ file, isSelected, onSelect, onRightClick }) {
+function FileCard({ file, isSelected, onSelect, onRightClick, onOpen }) {
   return (
     <div
       className={`file-card ${isSelected ? 'selected' : ''}`}
       onClick={onSelect}
+      onDoubleClick={onOpen}
       onContextMenu={(e) => {
         e.preventDefault()
         onRightClick(e.clientX, e.clientY)

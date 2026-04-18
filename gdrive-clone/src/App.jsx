@@ -2,16 +2,13 @@ import { useState, useReducer } from 'react'
 import { FilesContext } from './context/FilesContext'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
-import MainContent from './components/MainContent'
+import { Routes, Route } from 'react-router-dom'
+import MyDrive from './pages/MyDrive'
+import Starred from './pages/Starred'
+import Trash from './pages/Trash'
 import './App.css'
 
-const initialFiles = [
-  { id: 1, name: 'Resume.pdf',     type: 'pdf',    size: '240 KB', modified: 'Apr 10' },
-  { id: 2, name: 'Holiday Photos', type: 'folder', size: '1.2 GB', modified: 'Apr 8'  },
-  { id: 3, name: 'Demo Video.mp4', type: 'video',  size: '84 MB',  modified: 'Apr 5'  },
-  { id: 4, name: 'Notes.doc',      type: 'doc',    size: '18 KB',  modified: 'Mar 28' },
-  { id: 5, name: 'Screenshot.png', type: 'image',  size: '2.1 MB', modified: 'Mar 22' },
-]
+const initialFiles = [];
 
 function filesReducer(state, action) {
   switch (action.type) {
@@ -31,8 +28,12 @@ function App() {
       <FilesContext.Provider value={{ files, dispatch, query, setQuery }}>
         <Navbar />
         <div className="app-body">
-          <Sidebar />
-          <MainContent />
+            <Sidebar />
+            <Routes>
+              <Route path="/" element={<MyDrive />} />
+              <Route path="/starred" element={<Starred />} />
+              <Route path="/trash" element={<Trash />} />
+            </Routes>
         </div>
       </FilesContext.Provider>
     </div>

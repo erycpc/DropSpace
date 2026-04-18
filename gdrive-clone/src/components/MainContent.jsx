@@ -3,20 +3,24 @@ import { FilesContext } from '../context/FilesContext'
 import FileCard from './FileCard'
 import ContextMenu from './ContextMenu'
 import RenameModal from './RenameModal'
+import PreviewModal from './PreviewModal'
 
-function MainContent() {
+function MainContent({ title = "My Drive" }) {
   const { files, dispatch, query } = useContext(FilesContext)
   const [selectedId, setSelectedId] = useState(null)
   const [contextMenu, setContextMenu] = useState(null)
   const [renameFile, setRenameFile] = useState(null)
+  const [previewFile, setPreviewFile] = useState(null)
 
   const filteredFiles = files.filter(file =>
   file.name.toLowerCase().includes(query.toLowerCase())
-)
+  )
+
+
 
   return (
     <main className="main-content" onClick={() => setContextMenu(null)}>
-      <h2 className="section-title">My Drive</h2>
+      <h2 className="section-title">{title}</h2>
       <div className="files-grid">
         {filteredFiles.map(file => (
           <FileCard
@@ -25,6 +29,7 @@ function MainContent() {
             isSelected={selectedId === file.id}
             onSelect={() => setSelectedId(file.id)}
             onRightClick={(x, y) => setContextMenu({ x, y, file })}
+            onOpen={() => setPreviewFile(file)}
           />
         ))}
       </div>
@@ -40,6 +45,7 @@ function MainContent() {
           x={contextMenu.x}
           y={contextMenu.y}
           file={contextMenu.file}
+          onOpen={() => { setPreviewFile(contextMenu.file); setContextMenu(null) }}
           onClose={() => setContextMenu(null)}
           onDelete={(id) => dispatch({ type: 'DELETE', id })}
           onRename={(file) => { setRenameFile(file); setContextMenu(null) }}
@@ -50,6 +56,12 @@ function MainContent() {
           file={renameFile}
           onClose={() => setRenameFile(null)}
           onRename={(id, name) => dispatch({ type: 'RENAME', id, name })}
+        />
+      )}
+      {previewFile && (
+        <PreviewModal
+          file={previewFile}
+          onClose={() => setPreviewFile(null)}
         />
       )}
     </main>
