@@ -2,7 +2,10 @@ import { useState, useReducer } from 'react'
 import { FilesContext } from './context/FilesContext'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
-import MainContent from './components/MainContent'
+import { Routes, Route } from 'react-router-dom'
+import MyDrive from './pages/MyDrive'
+import Starred from './pages/Starred'
+import Trash from './pages/Trash'
 import './App.css'
 
 const initialFiles = [
@@ -31,8 +34,12 @@ function App() {
       <FilesContext.Provider value={{ files, dispatch, query, setQuery }}>
         <Navbar />
         <div className="app-body">
-          <Sidebar />
-          <MainContent />
+            <Sidebar />
+            <Routes>
+              <Route path="/" element={<MyDrive />} />
+              <Route path="/starred" element={<Starred />} />
+              <Route path="/trash" element={<Trash />} />
+            </Routes>
         </div>
       </FilesContext.Provider>
     </div>

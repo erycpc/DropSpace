@@ -4,7 +4,7 @@ import FileCard from './FileCard'
 import ContextMenu from './ContextMenu'
 import RenameModal from './RenameModal'
 
-function MainContent() {
+function MainContent({ title = "My Drive" }) {
   const { files, dispatch, query } = useContext(FilesContext)
   const [selectedId, setSelectedId] = useState(null)
   const [contextMenu, setContextMenu] = useState(null)
@@ -12,11 +12,11 @@ function MainContent() {
 
   const filteredFiles = files.filter(file =>
   file.name.toLowerCase().includes(query.toLowerCase())
-)
+  )
 
   return (
     <main className="main-content" onClick={() => setContextMenu(null)}>
-      <h2 className="section-title">My Drive</h2>
+      <h2 className="section-title">{title}</h2>
       <div className="files-grid">
         {filteredFiles.map(file => (
           <FileCard
